@@ -9,6 +9,8 @@ public class ParensValidator {
 				stack.append(c);
             	topOfStack++;
 			}
+			// c - 2 or c - 1 will get opposite of current c
+			// http://www.asciitable.com/
 			else if(c - 2 == stack.charAt(topOfStack) || c - 1 == stack.charAt(topOfStack)) {
 				stack.deleteCharAt(topOfStack);
 				topOfStack--;
