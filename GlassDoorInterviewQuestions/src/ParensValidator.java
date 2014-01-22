@@ -19,6 +19,9 @@ public class ParensValidator {
 				return false;
 			}
 		}
+		if(stack.length() > 0) {
+			return false;
+		}
 		return true;
 	}
 	
