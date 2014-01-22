@@ -2,49 +2,20 @@
 public class ParensValidator {
 	public boolean isValid(String parens) {
 		StringBuffer stack = new StringBuffer();
-		int topOfStack = -1; // top of an empty stack is -1, first item is in 0 location
-		
-    	// int a = (b) ? c : d;
+		int topOfStack = -1; 
+		String opens = "[<{(";
 		for(Character c : parens.toCharArray()) {
-	        switch (c) {
-	            case '[': 
-	            	stack.append(c);
-	            	topOfStack++;
-	            	break;
-	            case ']': 
-	            	if(stack.charAt(topOfStack) != '[') return false;
-	            	stack.deleteCharAt(topOfStack);
-	            	topOfStack--;
-	            	break;
-	            case '<':  
-	            	stack.append(c);
-	            	topOfStack++;
-	            	break;
-	            case '>':  
-	            	if(stack.charAt(topOfStack) != '<') return false;
-	            	stack.deleteCharAt(topOfStack);
-	            	topOfStack--;
-	            	break;	
-	            case '{':  
-	            	stack.append(c);
-	            	topOfStack++;
-	            	break; 
-	            case '}':  
-	            	if(stack.charAt(topOfStack) != '{') return false;
-	            	stack.deleteCharAt(topOfStack);
-	            	topOfStack--;
-	            	break;
-	            case '(': 
-	            	stack.append(c);
-	            	topOfStack++;
-	            	break;
-	            case ')':  
-	            	if(stack.charAt(topOfStack) != '(') return false;
-	            	stack.deleteCharAt(topOfStack);
-	            	topOfStack--;
-	            	break;
-	            default: return false;
-	        }
+			if(opens.indexOf(c) >= 0) {
+				stack.append(c);
+            	topOfStack++;
+			}
+			else if(c - 2 == stack.charAt(topOfStack) || c - 1 == stack.charAt(topOfStack)) {
+				stack.deleteCharAt(topOfStack);
+				topOfStack--;
+			}
+			else {
+				return false;
+			}
 		}
 		return true;
 	}

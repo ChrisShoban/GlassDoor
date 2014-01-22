@@ -21,8 +21,8 @@ public class ArrayMerger {
 	}
 	
 	public static void main(String[] args) {
-		int[] sorted1 = new int[]{2,4,6,9,13,19};
-		int[] sorted2 = new int[]{1,5,10,11,12,20,21,23,24};
+		int[] sorted1 = new int[]{2,4,6,9,13,19,20,21,23,24};
+		int[] sorted2 = new int[]{1,5,10,11,12};
 		System.out.println(Arrays.toString(merge(sorted1, sorted2)));
 	}
 }
